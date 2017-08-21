@@ -18,7 +18,7 @@
 		promise.then(function(response){
 			
 			
-			alert(response.data);
+			alert(response.data.menu_items[0].name);
 			
 		});
 		
