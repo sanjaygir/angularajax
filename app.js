@@ -9,7 +9,7 @@
 	.directive('foundItems', FoundItems);
 	
 	
-	NarrowItDownController .$inject = ['MenuService'];
+	NarrowItDownController.$inject = ['MenuService'];
 	function NarrowItDownController (MenuService){
 				
 		
