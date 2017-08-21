@@ -22,6 +22,9 @@
 		  
 		  
 		  list.itemName = "";
+		  
+		  
+		   list.items = shoppingList.getItems();
 		  		  
 		  
 		  
@@ -117,9 +120,15 @@ function MenuService() {
   var service = this;
 
   // List of shopping items
-  var items = [];
-   
+  var items = []; 
 
+   
+   
+  service.getItems = function () {
+    return items;
+  };
+   
+   
    
    service.searchForTerm = function(desc){
 	   
@@ -128,7 +137,14 @@ function MenuService() {
 			
 			promise.then(function(response){			
 				
-				alert(response[0].description);
+								
+				for(var i=0; i<response.length; i++){
+					
+					items.push(response[i]);
+				
+					
+				}
+				
 				
 			});
 	
