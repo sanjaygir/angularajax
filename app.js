@@ -23,7 +23,7 @@
 		  		  
 		  
 		  
-		this.test = function() {
+		list.test = function() {
 							
 			MenuService.getMatchedMenuItems(list.itemName);
 					
