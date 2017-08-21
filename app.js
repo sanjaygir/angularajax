@@ -38,6 +38,8 @@
 								
 				for(var i=0; i<res.length; i++){
 					
+					MenuService.clearItems();
+					
 					MenuService.addItem(res[i]);
 					
 				}
@@ -85,6 +87,11 @@ function MenuService($http) {
   var items = []; 
   
   
+  
+  service.clearItems = function(){
+	  items = [];
+	  
+  }
   
   service.removeItem = function(index){
 	  
