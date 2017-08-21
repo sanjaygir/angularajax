@@ -19,7 +19,7 @@
     <!-- LIST #1 - unlimited items -->
     <div id="list" ng-controller='NarrowItDownController  as list'>
       <input type="text" ng-model="list.itemName" placeholder="item name">      
-      <button ng-click="list.test();">Narrow It Down For Me!</button>
+      <button ng-click="list.narrow();">Narrow It Down For Me!</button>
 
       <found-items
         items="list.items"

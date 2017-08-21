@@ -32,7 +32,7 @@
 
 		 
 		  
-		list.test = function() {
+		list.narrow = function() {
 							
 			MenuService.getMatchedMenuItems(list.itemName).then(function(res){
 								
