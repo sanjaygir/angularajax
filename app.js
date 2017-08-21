@@ -39,7 +39,6 @@
 						
 			MenuService.getMatchedMenuItems(list.itemName).then(function(res){
 					
-
 					
 					
 				for(var i=0; i<res.length; i++){
@@ -49,6 +48,8 @@
 					
 				}
 				
+				
+				list.items = MenuService.getItems();
 				
 			});
 			
