@@ -25,7 +25,16 @@
 		  
 		list.test = function() {
 							
-			MenuService.getMatchedMenuItems(list.itemName);
+			MenuService.getMatchedMenuItems(list.itemName).then(function(res){
+								
+				for(var i=0; i<res.length; i++){
+					
+					MenuService.addItem(res[i]);
+					
+				}
+				
+				
+			});
 			
 			
 		};
@@ -66,6 +75,13 @@ function MenuService($http) {
   var items = []; 
   
   
+  
+    service.addItem = function(el){
+		
+		items.push(el);
+		
+	}
+  
   	service.getMatchedMenuItems = function(searchTerm){
 			
 		return $http({
@@ -86,7 +102,7 @@ function MenuService($http) {
 						
 							if(items[i].description.indexOf(searchTerm) != -1){
 								
-								items.push(items[i]);
+								foundItems.push(items[i]);
 								
 								
 							}
