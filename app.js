@@ -19,9 +19,19 @@
 		  
 		  list.itemName = "";		  
 		  
-		   list.items = MenuService.getItems();
+		  list.items = MenuService.getItems();
 		  		  
-		  
+		 
+
+		 
+		 list.removeItem = function(itemIndex){
+			 
+			 
+			 MenuService.removeItem(itemIndex);
+			 
+		 }
+
+		 
 		  
 		list.test = function() {
 							
@@ -51,7 +61,8 @@ function FoundItems() {
   var ddo = {
     templateUrl: 'shoppingList.html',
     scope: {
-      items: '<'
+      items: '<',
+	  onRemove: '&'
       	  
     }
     
@@ -74,6 +85,15 @@ function MenuService($http) {
   // List of shopping items
   var items = []; 
   
+  
+  
+  service.removeItem = function(index){
+	  
+	  
+	  items.splice(index, 1);
+	  
+	  
+  }
   
   
     service.addItem = function(el){
