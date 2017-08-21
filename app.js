@@ -59,7 +59,7 @@ function FoundItems() {
 
 
 MenuService.$inject = ['$http'];
-function MenuService('$http') {
+function MenuService($http) {
   var service = this;
 
   // List of shopping items
