@@ -67,7 +67,7 @@ function FoundItems() {
   var ddo = {
     templateUrl: 'shoppingList.html',
     scope: {
-      items: '=',
+      items: '<',
 	  onRemove: '&'
       	  
     }
