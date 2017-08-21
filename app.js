@@ -5,31 +5,27 @@
 	
 	angular.module('MenuApp', [])
 	.controller('MenuController', MenuController)
-	.service('MenuSearchService', MenuSearchService)
-	.factory('MenuFactory', MenuFactory)
-    .directive('foundItems', FoundItems);
+	.service('MenuService', MenuService)
+	.directive('foundItems', FoundItems);
 	
 	
-	MenuController.$inject = ['MenuFactory'];
-	function MenuController(MenuFactory){
+	MenuController.$inject = ['MenuService'];
+	function MenuController(MenuService){
 				
 		
 		  var list = this;
-
-		  // Use factory to create new shopping list service
-		  var shoppingList = MenuFactory();
 
 		  
 		  
 		  list.itemName = "";		  
 		  
-		   list.items = shoppingList.getItems();
+		   list.items = MenuService.getItems();
 		  		  
 		  
 		  
 		this.test = function() {
 							
-			shoppingList.searchForTerm(list.itemName);
+			MenuService.getMatchedMenuItems(list.itemName);
 					
 			
 		};
@@ -37,60 +33,7 @@
 	}
 	
 	
-	
-	MenuSearchService.$inject = ['$http'];
-	
-	function MenuSearchService($http){
 		
-		
-		var service = this;
-		
-		
-		service.getMatchedMenuItems = function(searchTerm){
-			
-		return $http({
-				
-				method: "GET",
-				url: ('menu_items.json')
-				
-			}).then(
-				function(response){
-				
-					var foundItems = [];
-					
-					
-					var items = response.data.menu_items;
-					
-					
-					for(var i=0; i<items.length; i++){
-						
-							if(items[i].description.indexOf(searchTerm) != -1){
-								
-								foundItems.push(items[i]);
-																
-								
-							}
-							
-					}
-					
-					
-					
-					
-					return foundItems;
-				
-					
-				}
-			
-			);
-			
-			
-			
-		};
-		
-	}
-	
-	
-	
 	
 	
 	
@@ -113,56 +56,64 @@ function FoundItems() {
 
 
 // If not specified, maxItems assumed unlimited
-MenuService.$inject = ['MenuSearchService'];
-function MenuService(MenuSearchService) {
+
+function MenuService() {
   var service = this;
 
   // List of shopping items
   var items = []; 
-
-   
-   
+  
+  
+  	service.getMatchedMenuItems = function(searchTerm){
+			
+		return $http({
+				
+				method: "GET",
+				url: ('menu_items.json')
+				
+			}).then(
+				function(response){
+				
+					var foundItems = [];
+					
+					
+					var items = response.data.menu_items;
+					
+					
+					for(var i=0; i<items.length; i++){
+						
+							if(items[i].description.indexOf(searchTerm) != -1){
+								
+								items.push(items[i]);
+								
+								
+							}
+							
+					}
+					
+					
+					
+					
+					return foundItems;
+				
+					
+				}
+			
+			);
+			
+			
+			
+		};
+      
   service.getItems = function () {
     return items;
   };
    
    
-   
-   service.searchForTerm = function(desc){
-	   
-				
-			var promise = MenuSearchService.getMatchedMenuItems(desc);
-			
-			promise.then(function(response){			
-				
-								
-				for(var i=0; i<response.length; i++){
-					
-					items.push(response[i]);
-				
-					
-				}
-				
-				
-			});
-	
-	
-   };
-   
-   			
+  
 		
 
 }
-
-
-function MenuFactory() {
-  var factory = function () {
-    return new MenuService();
-  };
-
-  return factory;
-}
-
 
 
 
