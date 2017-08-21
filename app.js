@@ -18,11 +18,11 @@
 			
 						
 		
-			var promise = MenuSearchService.getMatchedMenuItems('test');
+			var promise = MenuSearchService.getMatchedMenuItems('white');
 			
 			promise.then(function(response){			
 				
-				alert(response);
+				alert(response[0].description);
 				
 			});
 			
