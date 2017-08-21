@@ -57,7 +57,9 @@ function FoundItems() {
 
 // If not specified, maxItems assumed unlimited
 
-function MenuService() {
+
+MenuService.$inject = ['$http'];
+function MenuService('$http') {
   var service = this;
 
   // List of shopping items
