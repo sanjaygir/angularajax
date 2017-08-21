@@ -21,19 +21,16 @@
 
 		  
 		  
-		  list.itemName = "";
-		  
+		  list.itemName = "";		  
 		  
 		   list.items = shoppingList.getItems();
 		  		  
 		  
 		  
 		this.test = function() {
-			
-				
+							
 			shoppingList.searchForTerm(list.itemName);
-			
-		
+					
 			
 		};
 		
@@ -116,7 +113,8 @@ function FoundItems() {
 
 
 // If not specified, maxItems assumed unlimited
-function MenuService() {
+MenuService.$inject = ['MenuSearchService'];
+function MenuService(MenuSearchService) {
   var service = this;
 
   // List of shopping items
