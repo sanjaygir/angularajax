@@ -1,11 +1,16 @@
 
 <ol>
+
+  <span ng-if="items.length == 0"> Nothing found </span>
+
+  <br>
+  
   <li ng-repeat="item in items">
     
 	
-	{{ item.name }} 
+	{{ item.name }} , {{ item.short_name }} , {{ item.description }} 
 	
-	<button ng-click="onRemove({index: $index});">Remove Item</button>
+	<button ng-click="onRemove({index: $index});">Don't want this one!</button>
 	
   </li>
 </ol>

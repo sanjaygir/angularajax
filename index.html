@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html ng-app="MenuApp">
+<html ng-app="NarrowItDownApp">
 
 <head>
 
@@ -17,9 +17,9 @@
 	<h1>Directives with Isolate Scope and '&'</h1>
 
     <!-- LIST #1 - unlimited items -->
-    <div id="list" ng-controller='MenuController as list'>
+    <div id="list" ng-controller='NarrowItDownController  as list'>
       <input type="text" ng-model="list.itemName" placeholder="item name">      
-      <button ng-click="list.test();">Add Item</button>
+      <button ng-click="list.test();">Narrow It Down For Me!</button>
 
       <found-items
         items="list.items"

@@ -3,14 +3,14 @@
 	'use strict';
 	
 	
-	angular.module('MenuApp', [])
-	.controller('MenuController', MenuController)
+	angular.module('NarrowItDownApp', [])
+	.controller('NarrowItDownController ', NarrowItDownController )
 	.service('MenuService', MenuService)
 	.directive('foundItems', FoundItems);
 	
 	
-	MenuController.$inject = ['MenuService'];
-	function MenuController(MenuService){
+	NarrowItDownController .$inject = ['MenuService'];
+	function NarrowItDownController (MenuService){
 				
 		
 		  var list = this;
@@ -152,50 +152,6 @@ function MenuService($http) {
 		
 
 }
-
-
-
-
-	
-	
-	/*
-	
-	
-
-
-ShoppingListController.$inject = ['ShoppingListFactory'];
-function ShoppingListController(ShoppingListFactory) {
-  var list = this;
-
-  // Use factory to create new shopping list service
-  var shoppingList = ShoppingListFactory();
-
-  list.items = shoppingList.getItems();
-  var origTitle = "Shopping List #1";
-  list.title = origTitle + " (" + list.items.length + " items )";
-
-  list.itemName = "";
-  list.itemQuantity = "";
-
-  list.addItem = function () {
-    shoppingList.addItem(list.itemName, list.itemQuantity);
-    list.title = origTitle + " (" + list.items.length + " items )";
-  };
-
-  list.removeItem = function (itemIndex) {
-    console.log("'this' is: ", this);
-    this.lastRemoved = "Last item removed was " + this.items[itemIndex].name;
-    shoppingList.removeItem(itemIndex);
-    this.title = origTitle + " (" + list.items.length + " items )";
-  };
-}
-
-
-
-*/
-
-
-	
 	
 	
 	
