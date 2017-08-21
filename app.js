@@ -10,7 +10,7 @@
 	
 	
 	NarrowItDownController.$inject = ['MenuService'];
-	function NarrowItDownController (MenuService){
+	function NarrowItDownController(MenuService){
 				
 		
 		  var list = this;
