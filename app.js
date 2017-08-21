@@ -44,7 +44,7 @@
 		
 		service.getMatchedMenuItems = function(searchTerm){
 			
-			$http({
+		return $http({
 				
 				method: "GET",
 				url: ('menu_items.json')
