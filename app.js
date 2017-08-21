@@ -37,7 +37,7 @@
 			MenuService.getMatchedMenuItems(list.itemName).then(function(res){
 					
 
-				MenuService.clearItems();
+				//MenuService.clearItems();
 					
 					
 				for(var i=0; i<res.length; i++){
