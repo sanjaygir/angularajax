@@ -34,10 +34,12 @@
 		  
 		list.narrow = function() {
 							
+							
+			MenuService.clearItems();
+						
 			MenuService.getMatchedMenuItems(list.itemName).then(function(res){
 					
 
-				//MenuService.clearItems();
 					
 					
 				for(var i=0; i<res.length; i++){
