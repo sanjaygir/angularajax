@@ -1,10 +1,9 @@
 (function(){
 	
 	'use strict';
-	
-	
+		
 	angular.module('NarrowItDownApp', [])
-	.controller('NarrowItDownController ', NarrowItDownController )
+	.controller('NarrowItDownController', NarrowItDownController )
 	.service('MenuService', MenuService)
 	.directive('foundItems', FoundItems);
 	
