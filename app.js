@@ -6,25 +6,29 @@
 	angular.module('MenuApp', [])
 	.controller('MenuController', MenuController)
 	.service('MenuSearchService', MenuSearchService);
-	//.factory('MenuFactory', MenuFactory)
-    //.directive('menu', MenuDirective);
+	.factory('MenuFactory', MenuFactory)
+    .directive('foundItems', FoundItems);
 	
 	
-	MenuController.$inject = ['MenuSearchService'];
-	function MenuController(MenuSearchService){
+	MenuController.$inject = ['MenuFactory'];
+	function MenuController(MenuFactory){
+				
 		
-		
+		  var list = this;
+
+		  // Use factory to create new shopping list service
+		  var shoppingList = MenuFactory();
+
+		  
+		  
+		  list.itemName = "";
+		  		  
+		  
+		  
 		this.test = function() {
 			
-						
-		
-			var promise = MenuSearchService.getMatchedMenuItems('white');
-			
-			promise.then(function(response){			
 				
-				alert(response[0].description);
-				
-			});
+			shoppingList.searchForTerm(list.itemName);
 			
 		
 			
@@ -91,43 +95,69 @@
 	
 	
 	
-	
-	/*
-	
-	
-	
-function ShoppingListDirective() {
+function FoundItems() {
   var ddo = {
     templateUrl: 'shoppingList.html',
     scope: {
-      items: '<',
-      myTitle: '@title',
-      badRemove: '=',
-      onRemove: '&'
-    },
-    controller: ShoppingListDirectiveController,
-    controllerAs: 'list',
-    bindToController: true
+      items: '<'
+      	  
+    }
+    
   };
 
   return ddo;
 }
 
 
-function ShoppingListDirectiveController() {
-  var list = this;
 
-  list.cookiesInList = function () {
-    for (var i = 0; i < list.items.length; i++) {
-      var name = list.items[i].name;
-      if (name.toLowerCase().indexOf("cookie") !== -1) {
-        return true;
-      }
-    }
 
-    return false;
-  };
+
+// If not specified, maxItems assumed unlimited
+function MenuService() {
+  var service = this;
+
+  // List of shopping items
+  var items = [];
+   
+
+   
+   service.searchForTerm = function(desc){
+	   
+				
+			var promise = MenuSearchService.getMatchedMenuItems(desc);
+			
+			promise.then(function(response){			
+				
+				alert(response[0].description);
+				
+			});
+	
+	
+   };
+   
+   			
+		
+
 }
+
+
+function MenuFactory() {
+  var factory = function () {
+    return new MenuService();
+  };
+
+  return factory;
+}
+
+
+
+
+
+	
+	
+	/*
+	
+	
 
 
 ShoppingListController.$inject = ['ShoppingListFactory'];
@@ -157,45 +187,6 @@ function ShoppingListController(ShoppingListFactory) {
   };
 }
 
-
-// If not specified, maxItems assumed unlimited
-function ShoppingListService(maxItems) {
-  var service = this;
-
-  // List of shopping items
-  var items = [];
-
-  service.addItem = function (itemName, quantity) {
-    if ((maxItems === undefined) ||
-        (maxItems !== undefined) && (items.length < maxItems)) {
-      var item = {
-        name: itemName,
-        quantity: quantity
-      };
-      items.push(item);
-    }
-    else {
-      throw new Error("Max items (" + maxItems + ") reached.");
-    }
-  };
-
-  service.removeItem = function (itemIndex) {
-    items.splice(itemIndex, 1);
-  };
-
-  service.getItems = function () {
-    return items;
-  };
-}
-
-
-function ShoppingListFactory() {
-  var factory = function (maxItems) {
-    return new ShoppingListService(maxItems);
-  };
-
-  return factory;
-}
 
 
 */
