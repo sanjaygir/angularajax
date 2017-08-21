@@ -5,7 +5,7 @@
 	
 	angular.module('MenuApp', [])
 	.controller('MenuController', MenuController)
-	.service('MenuSearchService', MenuSearchService);
+	.service('MenuSearchService', MenuSearchService)
 	.factory('MenuFactory', MenuFactory)
     .directive('foundItems', FoundItems);
 	
